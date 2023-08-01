@@ -1,0 +1,6 @@
+.badges{
+    overflow: hidden;
+}
+.badge{
+    margin: 0 5px 5px 0 !important;
+}

@@ -1,0 +1,8 @@
+.moviesRow{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.moviesRow .item{
+    flex: 0 1 33.333%;
+}
