@@ -17,13 +17,9 @@ const GenresNav = () => {
             <ul className="collection with-header">
                 <li className="collection-header"><h5>Genres</h5></li>
                 {genres?.map(genre =>
-                    <li className="collection-item" key={genre.id}>
-                        <div>
-                            <NavLink to={genre.id}>
-                                {genre.name}
-                            </NavLink>
-                        </div>
-                    </li>
+                    <NavLink key={genre.id} to={`genre/${genre.id}`} className="collection-item">
+                        {genre.name}
+                    </NavLink>
                 )}
             </ul>
         </>

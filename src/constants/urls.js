@@ -19,6 +19,7 @@ const urls = {
     },
     genre: {
         root: genre,
+        single: 'genre',
         serviceAll: '/genre/movie/list'
     }
 }
