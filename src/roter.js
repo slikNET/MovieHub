@@ -22,6 +22,10 @@ const router = createBrowserRouter([
                     {
                         path: urls.user.root,
                         element: <UserPage/>
+                    },
+                    {
+                        path: urls.genre.root,
+                        element: <UserPage/>
                     }
                 ]
             },

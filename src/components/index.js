@@ -9,4 +9,6 @@ export * from './Pagination/Pagination';
 
 export * from './AsideNav/AsideNav';
 
+export * from './GenresNav/GenresNav';
+
 export * from './PageLoader/PageLoader';

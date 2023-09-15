@@ -7,12 +7,9 @@ import {MovieInfo} from "../MovieInfo/MovieInfo";
 import {urls} from "../../../constants";
 import {GenreBadges} from "../GenreBadges/GenreBadges";
 
-const MovieCard = ({movie, genres: {genres}}) => {
-    const {id, title, poster_path, genre_ids, vote_average} = movie;
+const MovieCard = ({movie}) => {
+    const {id, title, poster_path, genres ,vote_average} = movie;
 
-    const movieGenres = genres?.filter(genre => {
-        return genre_ids.includes(genre.id);
-    });
 
     return (
         <div className="card">
@@ -28,7 +25,7 @@ const MovieCard = ({movie, genres: {genres}}) => {
                     {title}
                 </span>
 
-                <GenreBadges genres={movieGenres}/>
+                <GenreBadges genres={genres}/>
 
                 <p>
                     <Link

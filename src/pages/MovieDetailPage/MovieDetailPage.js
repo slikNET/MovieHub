@@ -1,29 +1,20 @@
-import React, {createContext, useState} from 'react';
-import {useParams} from "react-router-dom";
+import React from 'react';
 
 import {MovieDetail, PageLoader} from "../../components";
-
-const MovieDetailContext = createContext(null);
+import {useSelector} from "react-redux";
 
 const MovieDetailPage = () => {
-    const [pageLoading, setPageLoading] = useState(true);
-    const [movie, setMovie] = useState(null);
-    const {id} = useParams();
-
-
+    const {isLoading} = useSelector(state => state.movies)
 
     return (
         <>
-            <MovieDetailContext.Provider value={{id, pageLoading, setPageLoading, setMovie}}>
-                {pageLoading && <PageLoader/> }
+            {isLoading && <PageLoader/> }
 
-                <MovieDetail movie={movie}/>
-            </MovieDetailContext.Provider>
+            <MovieDetail />
         </>
     );
 };
 
 export {
-    MovieDetailPage,
-    MovieDetailContext
+    MovieDetailPage
 };

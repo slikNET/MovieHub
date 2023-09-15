@@ -1,29 +1,34 @@
-import React, {createContext, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useSearchParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 import {MoviesList, PageLoader, Pagination} from "../../components";
+import {moviesActions} from "../../redux/slices/moviesSlice";
 
-const MoviesContext = createContext(null);
 
 const MoviesPage = () => {
-    const [pageLoading, setPageLoading] = useState(true);
     const [searchParams, setSearchParams] = useSearchParams();
-    const [currentPage, setCurrentPage] = useState(parseInt(searchParams.get('page')) || 1);
+
+    const dispatch = useDispatch();
+    const {isLoading} = useSelector(state => state.movies)
+
+    const currentPage = searchParams.get('page') || 1;
+
+    useEffect(() => {
+        dispatch(moviesActions.betByPage({page: currentPage}))
+    }, [currentPage])
 
     return (
         <>
-            <MoviesContext.Provider value={{currentPage, setCurrentPage, searchParams, setSearchParams, pageLoading, setPageLoading}}>
-                {pageLoading && <PageLoader/> }
+            {isLoading && <PageLoader/> }
 
-                {!pageLoading && <Pagination />}
+            {!isLoading && <Pagination currentPage={currentPage}/>}
 
-                <MoviesList />
-            </MoviesContext.Provider>
+            <MoviesList />
         </>
     );
 };
 
 export {
-    MoviesPage,
-    MoviesContext
+    MoviesPage
 };
